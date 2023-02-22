@@ -12,13 +12,18 @@ function MainContainer() {
     .then(stocks => setStocks(stocks))
   }, [])
 
+  function handleAddToPortfolio() {
+    console.log("Added")
+  }
+
   return (
     <div>
       <SearchBar />
       <div className="row">
         <div className="col-8">
           <StockContainer 
-          stocks={stocks}/>
+          stocks={stocks}
+          onAddToPortfolio={handleAddToPortfolio}/>
         </div>
         <div className="col-4">
           <PortfolioContainer />
