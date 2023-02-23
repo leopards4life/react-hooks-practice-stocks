@@ -1,13 +1,13 @@
 import React from "react";
 import Stock from "./Stock";
 
-function StockContainer({ stocks, onAddToPortfolio }) {
+function StockContainer({ stocks, onAddStock }) {
 
   const stockCards = stocks.map((stock) => (
     <Stock 
     key={stock.id}
     stock={stock}
-    onAddToPortfolio={onAddToPortfolio}
+    onStockClick={onAddStock}
     />
   ))
   return (

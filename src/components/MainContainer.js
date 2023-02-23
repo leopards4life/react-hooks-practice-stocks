@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar";
 
 function MainContainer() {
   const [stocks, setStocks] = useState([]);
+  const [portfolio, setPortfolio] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3001/stocks")
@@ -12,8 +13,12 @@ function MainContainer() {
     .then(stocks => setStocks(stocks))
   }, [])
 
-  function handleAddToPortfolio() {
-    console.log("Added")
+  function handleAddStock(stockToAdd) {
+    const stockInPortfolio = portfolio.find((stock) => 
+    stock.id === stockToAdd.id );
+    if (!stockInPortfolio) {
+      setPortfolio([...portfolio, stockToAdd]);
+    }
   }
 
   return (
@@ -23,10 +28,12 @@ function MainContainer() {
         <div className="col-8">
           <StockContainer 
           stocks={stocks}
-          onAddToPortfolio={handleAddToPortfolio}/>
+          onAddStock={handleAddStock}/>
         </div>
         <div className="col-4">
-          <PortfolioContainer />
+          <PortfolioContainer
+          stocks={portfolio}
+           />
         </div>
       </div>
     </div>
