@@ -21,6 +21,12 @@ function MainContainer() {
     }
   }
 
+  function handleRemoveStock(stockToRemove) {
+    const updatedStocks = portfolio.filter(stock => 
+      stock.id !== stockToRemove.id);
+      setPortfolio(updatedStocks);
+  }
+
   return (
     <div>
       <SearchBar />
@@ -33,6 +39,7 @@ function MainContainer() {
         <div className="col-4">
           <PortfolioContainer
           stocks={portfolio}
+          onRemoveStock={handleRemoveStock}
            />
         </div>
       </div>

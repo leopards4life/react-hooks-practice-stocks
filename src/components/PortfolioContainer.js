@@ -1,17 +1,13 @@
 import React from "react";
 import Stock from "./Stock";
 
-function PortfolioContainer({ stocks }) {
-
-  function handleRemoveStock() {
-    console.log("Remove")
-  }
+function PortfolioContainer({ stocks, onRemoveStock }) {
 
   const stockList = stocks.map((stock) => (
     <Stock 
       key={stock.id}
       stock={stock}
-      onStockClick={handleRemoveStock}
+      onStockClick={onRemoveStock}
     />
   ))
   return (
